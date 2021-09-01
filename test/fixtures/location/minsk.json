@@ -1,0 +1,40 @@
+{
+    "id": "place.9038333669154200",
+    "type": "Feature",
+    "place_type": [
+        "region",
+        "place"
+    ],
+    "relevance": 1,
+    "properties": {
+        "wikidata": "Q2280",
+        "short_code": "BY-HM"
+    },
+    "text": "Minsk",
+    "place_name": "Minsk, Belarus",
+    "bbox": [
+        27.3732800003033,
+        53.7921290053172,
+        27.7904989887967,
+        53.970920997488
+    ],
+    "center": [
+        27.56184,
+        53.90225
+    ],
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            27.56184,
+            53.90225
+        ]
+    },
+    "context": [
+        {
+            "id": "country.13685961050877970",
+            "wikidata": "Q184",
+            "short_code": "by",
+            "text": "Belarus"
+        }
+    ]
+}
