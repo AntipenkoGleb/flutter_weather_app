@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import '../models/location_model.dart';
 
 abstract class LocationRemoteDatasource {
-  Future<LocationModel> getLocationByCoords(double lat, double lon);
+  Future<List<LocationModel>> getLocationByCoords(double lat, double lon);
 
   Future<List<LocationModel>> getLocationByName(String name);
 }
@@ -23,35 +23,36 @@ class MapboxLocationRemoteDatasource extends LocationRemoteDatasource {
   MapboxLocationRemoteDatasource({required this.client, required this.env});
 
   @override
-  Future<LocationModel> getLocationByCoords(double lat, double lon) async {
+  Future<List<LocationModel>> getLocationByCoords(
+      double lat, double lon) async {
+    return _getLocationByQuery('$lon,$lat');
+  }
+
+  @override
+  Future<List<LocationModel>> getLocationByName(String name) async {
+    return _getLocationByQuery(name);
+  }
+
+  Future<List<LocationModel>> _getLocationByQuery(String query) async {
     final apiKey = env.maybeGet(locationApiKeyName);
     if (apiKey == null) throw EnviromentException();
 
     final response = await client.get(
-      Uri.https(
-        locationApiUrl,
-        '$locationApiEndpoint/$lon,$lat.json',
-        {
-          'types': 'region',
-          'access_token': apiKey,
-        },
-      ),
-      headers: {'Content-Type': 'application/json'},
+      Uri.https(locationApiUrl, '$locationApiEndpoint/$query.json', {
+        'types': 'region',
+        'access_token': apiKey,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     );
 
     if (response.statusCode == 200) {
       return (json.decode(response.body)['features'] as List<dynamic>)
           .map((l) => LocationModel.fromJson(l as Map<String, dynamic>))
-          .toList()
-          .first;
+          .toList();
     } else {
       throw ServerException();
     }
-  }
-
-  @override
-  Future<List<LocationModel>> getLocationByName(String name) {
-    // TODO: implement getLocationByName
-    throw UnimplementedError();
   }
 }
