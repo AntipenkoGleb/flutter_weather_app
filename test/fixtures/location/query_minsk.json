@@ -1,0 +1,88 @@
+{
+    "type": "FeatureCollection",
+    "query": [
+        "minsk"
+    ],
+    "features": [
+        {
+            "id": "place.9038333669154200",
+            "type": "Feature",
+            "place_type": [
+                "region",
+                "place"
+            ],
+            "relevance": 1,
+            "properties": {
+                "wikidata": "Q2280",
+                "short_code": "BY-HM"
+            },
+            "text": "Minsk",
+            "place_name": "Minsk, Belarus",
+            "bbox": [
+                27.3732800003033,
+                53.7921290053172,
+                27.7904989887967,
+                53.970920997488
+            ],
+            "center": [
+                27.56184,
+                53.90225
+            ],
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    27.56184,
+                    53.90225
+                ]
+            },
+            "context": [
+                {
+                    "id": "country.13685961050877970",
+                    "wikidata": "Q184",
+                    "short_code": "by",
+                    "text": "Belarus"
+                }
+            ]
+        },
+        {
+            "id": "region.14146701401889110",
+            "type": "Feature",
+            "place_type": [
+                "region"
+            ],
+            "relevance": 1,
+            "properties": {
+                "wikidata": "Q192959",
+                "short_code": "BY-MI"
+            },
+            "text": "Minsk Region",
+            "place_name": "Minsk Region, Belarus",
+            "bbox": [
+                26.0028940043834,
+                52.3923220135781,
+                29.4946399997632,
+                55.0216589237961
+            ],
+            "center": [
+                27.75,
+                53.66667
+            ],
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    27.75,
+                    53.66667
+                ]
+            },
+            "context": [
+                {
+                    "id": "country.13685961050877970",
+                    "wikidata": "Q184",
+                    "short_code": "by",
+                    "text": "Belarus"
+                }
+            ]
+        }
+    ],
+    "attribution": "NOTICE: © 2021 Mapbox and its suppliers. All rights reserved. Use of this data is subject to the Mapbox Terms of Service (https://www.mapbox.com/about/maps/). This response and the information it contains may not be retained. POI(s) provided by Foursquare."
+}
