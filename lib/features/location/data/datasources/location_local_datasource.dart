@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter_weather_app/core/errors/exceptions.dart';
 import 'package:flutter_weather_app/features/location/data/models/location_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,20 +15,18 @@ class LocationLocalDatasourceImpl extends LocationLocalDatasource {
   LocationLocalDatasourceImpl(this.preferences);
 
   @override
-  LocationModel load(String name) {
-    // TODO: implement load
-    throw UnimplementedError();
-  }
-
-  @override
-  List<LocationModel> loadAll() {
-    // TODO: implement loadAll
-    throw UnimplementedError();
-  }
-
-  @override
   Future<void> save(LocationModel location) async {
-    // TODO: implement save
-    throw UnimplementedError();
+    preferences.setString(
+        'location: ${location.name}', json.encode(location.toJson()));
+  }
+
+  @override
+  LocationModel load(String name) {
+    final value = preferences.getString('location: $name');
+    if (value != null) {
+      return LocationModel.fromJson(json.decode(value));
+    } else {
+      throw CacheException();
+    }
   }
 }

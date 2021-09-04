@@ -9,7 +9,7 @@ import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
-import 'location_local_datasource.mocks.dart';
+import 'location_local_datasource_test.mocks.dart';
 
 @GenerateMocks([SharedPreferences])
 void main() {
@@ -35,7 +35,8 @@ void main() {
         // assert
         final expectedJson = json.encode(tLocationsModel.toJson());
         verify(
-          mockSharedPreferences.setString(tLocationsModel.name, expectedJson),
+          mockSharedPreferences.setString(
+              'location: ${tLocationsModel.name}', expectedJson),
         );
       },
     );
@@ -53,7 +54,8 @@ void main() {
         // act
         final result = datasource.load(tLocationModel.name);
         // assert
-        verify(mockSharedPreferences.getString(tLocationModel.name));
+        verify(mockSharedPreferences
+            .getString('location: ${tLocationModel.name}'));
         expect(result, tLocationModel);
       },
     );
