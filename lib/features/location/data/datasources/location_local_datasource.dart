@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class LocationLocalDatasource {
   Future<void> save(LocationModel location);
   LocationModel load(String name);
-  List<LocationModel> loadAll();
 }
 
 class LocationLocalDatasourceImpl extends LocationLocalDatasource {
